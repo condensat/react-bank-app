@@ -1,0 +1,17 @@
+.App {
+  margin-top: 15px;
+}
+
+.App .nav-item {
+  cursor: pointer;
+  color: grey;
+  margin-right: 15px;
+}
+
+.App .navbar-brand {
+  font-weight: bold;
+}
+
+.App .navbar-brand a {
+  color: grey;
+}
