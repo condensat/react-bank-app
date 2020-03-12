@@ -5,6 +5,9 @@ import { LinkContainer } from "react-router-bootstrap";
 
 import Routes from "./Routes";
 
+import HomeIcon from '@material-ui/icons/HomeOutlined';
+import LogoutIcon from '@material-ui/icons/ExitToAppOutlined';
+import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 import "./App.css";
 
 
@@ -32,19 +35,23 @@ function App(props) {
     <div className="App container">
       <Navbar bg="light" collapseOnSelect="true">
         <Navbar.Brand>
-          <Link to="/">Bank</Link>
+          <Link to="/">
+            <HomeIcon className="Icon" /> Condensat Bank
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ml-auto">
             {isAuthenticated
-              ? <NavItem onClick={handleLogout}>Logout</NavItem>
+              ? <NavItem onClick={handleLogout}>
+                  <LogoutIcon className="Icon Link"></LogoutIcon>
+                </NavItem>
               : <>
-                <LinkContainer to="/signup">
-                  <NavItem>Signup</NavItem>
-                </LinkContainer>
+                <Link className="small" to="/signup">
+                  signup
+                </Link>
                 <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
+                  <LoginIcon className="Icon Link"></LoginIcon>
                 </LinkContainer>
               </>
             }
