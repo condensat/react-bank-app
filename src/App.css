@@ -2,11 +2,6 @@
   margin-top: 15px;
 }
 
-.App .nav-item {
-  cursor: pointer;
-  color: grey;
-  margin-right: 15px;
-}
 
 .App .navbar-brand {
   font-weight: bold;
@@ -14,4 +9,24 @@
 
 .App .navbar-brand a {
   color: grey;
+  text-decoration: none;
+}
+
+.App .Icon {
+  margin-top: 3px;
+  vertical-align: top;
+  color: grey;
+}
+
+.App .Link {
+  cursor: pointer;
+}
+
+.App .small {
+  padding-top: 5px;
+  margin-right: 10px;
+  font-size: smaller;
+  color: grey;
+  padding-top: 5px;
+  text-decoration: none;
 }
