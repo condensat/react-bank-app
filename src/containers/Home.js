@@ -1,9 +1,10 @@
 import React, {useEffect} from "react";
 import { useCookies } from 'react-cookie';
+import PropTypes from "prop-types";
 
 import "./Home.css";
 
-function Home(props) {
+const Home = (props) => {
   const [cookies] = useCookies(['account', 'sessionId']);
 
   useEffect(() => {
@@ -24,5 +25,13 @@ function Home(props) {
     </div>
   );
 }
+
+Home.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+Home.defaultProps = {
+  history: []
+};
 
 export default Home;

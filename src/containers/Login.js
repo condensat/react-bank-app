@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form, InputGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useCookies } from 'react-cookie';
+import PropTypes from "prop-types";
 
 import * as bank_api from "/js/bank-api.min.js";
+
 import "./Login.css";
 
 function Login(props) {
@@ -67,5 +69,16 @@ function Login(props) {
     </div>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.object.isRequired,
+  userHasAuthenticated: PropTypes.func
+};
+
+Login.defaultProps = {
+  history: [],
+  userHasAuthenticated: () => {}
+};
+
 
 export default Login;

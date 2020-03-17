@@ -9,7 +9,7 @@ import LoaderButton from "../components/LoaderButton";
 import { useFormFields } from "../libs/hooksLib";
 import "./Signup.css";
 
-export default function Signup(props) {
+export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
