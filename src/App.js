@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, InputGroup } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useCookies } from 'react-cookie';
 
@@ -37,15 +37,35 @@ function App(props) {
             <HomeIcon className="Icon" /> Condensat Bank
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Nav className="ml-auto">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {isAuthenticated
+          ? <Navbar.Collapse className="mr-auto" id="basic-navbar-nav">
+            <NavDropdown className="menu" title="Menu" id="basic-nav-dropdown">
+              <LinkContainer to="/balance">
+                <NavDropdown.Item>Balance</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/receive">
+                <NavDropdown.Item>Receive funds</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/send">
+                <NavDropdown.Item>Send funds</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <LinkContainer to="/settings">
+                <NavDropdown.Item>Settings</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          </Navbar.Collapse>
+          : <></>
+        }
+        <Nav className="ml-auto">
+          <InputGroup>
             {isAuthenticated
               ? <NavItem onClick={closeSession}>
-                  <LogoutIcon className="Icon Link"></LogoutIcon>
-                </NavItem>
+                <LogoutIcon className="Icon Link"></LogoutIcon>
+              </NavItem>
               : <>
-                <Link className="small" to="/signup">
+                <Link className="Link small" to="/signup">
                   signup
                 </Link>
                 <LinkContainer to="/login">
@@ -53,8 +73,8 @@ function App(props) {
                 </LinkContainer>
               </>
             }
-          </Nav>
-        </Navbar.Collapse>
+          </InputGroup>
+        </Nav>
       </Navbar>
       <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
     </div>
@@ -82,10 +102,10 @@ sessionState = (props) => {
 
   // renew session timer
   useEffect(() => {
-      // skip if not authenticated
-      if (!isAuthenticated) {
-        return;
-      }
+    // skip if not authenticated
+    if (!isAuthenticated) {
+      return;
+    }
     setTimeout(bank_api.renewSession, 30000, (err) => {
       const incr = (err != null) ? 0 : 1;
       userHasAuthenticated(incr > 0);
