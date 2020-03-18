@@ -12,6 +12,24 @@
   text-decoration: none;
 }
 
+
+.App .menu a.active{
+  font-weight: bold;
+  background: transparent;
+  background-color: transparent;
+}
+
+.App .menu a:hover{
+  font-weight: bold;
+  background: transparent;
+  background-color: transparent;
+}
+
+.App .menu a {
+  color: grey;
+  text-decoration: none;
+}
+
 .App .Icon {
   margin-top: 3px;
   vertical-align: top;
@@ -29,4 +47,8 @@
   color: grey;
   padding-top: 5px;
   text-decoration: none;
+}
+
+.App a:hover {
+  font-weight: bold;
 }
