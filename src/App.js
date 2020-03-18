@@ -20,9 +20,7 @@ var sessionState = function(props) { }
 function App(props) {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
-  props.isAuthenticated = isAuthenticated;
-  props.userHasAuthenticated = userHasAuthenticated;
-  sessionState(props)
+  sessionState({ history: props.history, isAuthenticated, userHasAuthenticated });
 
   // close session
   function closeSession() {
