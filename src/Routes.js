@@ -8,6 +8,7 @@ import Login from "./containers/Login";
 import Settings from "./containers/Settings";
 
 import Balance from "./containers/Balance";
+import History from "./containers/History";
 import Receive from "./containers/Receive";
 import Send from "./containers/Send";
 
@@ -23,6 +24,7 @@ function Routes({ appProps }) {
 
       {/* Operations */}
       <AppliedRoute appProps={appProps} path="/balance" exact component={Balance} />
+      <AppliedRoute appProps={appProps} path="/history" exact component={History} />
       <AppliedRoute appProps={appProps} path="/receive" exact component={Receive} />
       <AppliedRoute appProps={appProps} path="/send" exact component={Send} />
 

@@ -16,3 +16,16 @@
 .Balance .lander p {
   color: #999;
 }
+
+.Balance .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.Balance .IconSmall {
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+  color: grey;
+}
