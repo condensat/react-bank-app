@@ -8,3 +8,53 @@
     max-width: 320px;
   }
 }
+
+.Login a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Login span.provider {
+  color: grey;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+.Login a:hover {
+  font-weight: bold;
+}
+
+.Login h3 {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.Login div.oauth.col {
+  color: grey;
+  text-align: center;
+  margin: 1em;
+}
+
+.Login div.provider {
+  color: grey;
+  text-align: left;
+  margin: 0.75em;
+  margin-left: 3em;
+}
+
+.Login div.provider img {
+  height: 64px;
+}
+
+.Login div.sep.col-md-auto {
+  border-right:1px solid #cecece;
+  margin: 0em;
+}
+
+.Login div.basic.col {
+  color: grey;
+  margin: 1em;
+}
