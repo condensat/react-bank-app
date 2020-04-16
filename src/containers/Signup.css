@@ -1,16 +1,64 @@
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
+
   .Signup {
     padding: 60px 0;
   }
 
-  .Signup form {
+  .Signup div.row {
     margin: 0 auto;
-    max-width: 320px;
+    max-width: 6400px;
   }
 }
 
-.Signup form span.help-block {
-  font-size: 14px;
-  padding-bottom: 10px;
-  color: #999;
+.Signup a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Signup span.provider {
+  color: grey;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+.Signup a:hover {
+  font-weight: bold;
+}
+
+.Signup h3 {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.Signup div.oauth.col {
+  color: grey;
+  text-align: center;
+  margin: 1em;
+}
+
+.Signup div.provider {
+  color: grey;
+  text-align: center;
+  margin: 0.75em;
+  margin-left: 3em;
+}
+
+.Signup span.provider {
+  padding-right: 1.25em;
+}
+
+.Signup div.provider img {
+  height: 64px;
+}
+
+.Signup div.sep.col-md-auto {
+  margin: 0em;
+}
+
+.Signup div.basic.col {
+  color: grey;
+  margin: 1em;
 }
