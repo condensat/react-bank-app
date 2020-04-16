@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import moment from 'moment';
 
@@ -11,9 +12,10 @@ import "./History.css";
 import * as bank_api from "/js/bank-api.min.js";
 import BootstrapTable from 'react-bootstrap-table-next';
 
-const History = () => {
+const History = (props) => {
+  const isAuthenticated = props.isAuthenticated
   const location = useLocation();
-  const account = location.state
+  const account = location.state ? location.state : {accountId: 0}
   const accountId = account.accountId;
 
   const [history, setHistory] = useState([]);
@@ -43,6 +45,12 @@ const History = () => {
     dataField: 'id',
     order: 'desc'
   }];
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      props.history.push("/login");
+    }
+  })
 
   useEffect(() => {
     if (history.length == 0) {     
@@ -84,24 +92,39 @@ const History = () => {
   return (
     <div className="History">
       <div className="lander">
-        <Link className="Link back" to="/balance"><AccountBalanceWalletIcon className="Icon" />Balances</Link>
+      {isAuthenticated
+        ? <>
+            <Link className="Link back" to="/balance"><AccountBalanceWalletIcon className="Icon" />Balances</Link>
 
-        <h1><HistoryIcon className="Icon" />History</h1>
-        <div>
-          <div>{info.currency}</div>
-          <div>{info.from}</div>
-          <div>{info.to}</div>
-        </div>
-        <BootstrapTable
-          bootstrap4
-          keyField="id"
-          data={history}
-          columns={columns}
-          defaultSorted={defaultSorted}
-        />
+            <h1><HistoryIcon className="Icon" />History</h1>
+            <div>
+              <div>{info.currency}</div>
+              <div>{info.from}</div>
+              <div>{info.to}</div>
+            </div>
+            <BootstrapTable
+              bootstrap4
+              keyField="id"
+              data={history}
+              columns={columns}
+              defaultSorted={defaultSorted}
+            />
+          </>
+        : <></>
+      }
       </div>
     </div>
   );
 }
+
+History.propTypes = {
+  history: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+History.defaultProps = {
+  history: [],
+  isAuthenticated: false
+};
 
 export default History;

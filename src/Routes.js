@@ -5,6 +5,7 @@ import AppliedRoute from "./components/AppliedRoute";
 
 import Home from "./containers/Home";
 import Login from "./containers/Login";
+import Signup from "./containers/Signup";
 import Settings from "./containers/Settings";
 
 import Balance from "./containers/Balance";
@@ -20,6 +21,7 @@ function Routes({ appProps }) {
     <Switch>
       <AppliedRoute appProps={appProps} path="/" exact component={Home} />
       <AppliedRoute appProps={appProps} path="/login" exact component={Login} />
+      <AppliedRoute appProps={appProps} path="/signup" exact component={Signup} />
       <AppliedRoute appProps={appProps} path="/settings" exact component={Settings} />
 
       {/* Operations */}
