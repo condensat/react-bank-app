@@ -1,0 +1,18 @@
+.Receive .lander {
+  padding: 30px 0;
+  text-align: left;
+}
+
+.Receive .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Receive .lander h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.Receive .lander p {
+  color: #999;
+}
