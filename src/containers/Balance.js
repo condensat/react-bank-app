@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import HistoryIcon from '@material-ui/icons/History';
@@ -21,8 +22,8 @@ const CellHistory = (cell, row) => {
   )
 }
 
-const Balance = () => {
-
+const Balance = (props) => {
+  const isAuthenticated = props.isAuthenticated
   const [accounts, setAccounts] = useState([]);
 
   const columns = [{
@@ -58,6 +59,12 @@ const Balance = () => {
   }];
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      props.history.push("/login");
+    }
+  })
+
+  useEffect(() => {
     if (accounts.length == 0) {   
       // fetch accounts info
       bank_api.accountList({ rateBase: "CHF" }, (err, result) => {
@@ -87,18 +94,33 @@ const Balance = () => {
   return (
     <div className="Balance">
       <div className="lander">
-        <h1><AccountBalanceWalletIcon className="Icon" />Balances</h1>
-        
-        <BootstrapTable
-          bootstrap4
-          keyField="id"
-          data={accounts}
-          columns={columns}
-          defaultSorted={defaultSorted}
-        />
+      {isAuthenticated
+        ? <>
+            <h1><AccountBalanceWalletIcon className="Icon" />Balances</h1>
+            <BootstrapTable
+              bootstrap4
+              keyField="id"
+              data={accounts}
+              columns={columns}
+              defaultSorted={defaultSorted}
+            />
+          </>
+        : <></>
+      }
       </div>
     </div>
   );
 }
+
+Balance.propTypes = {
+  history: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+Balance.defaultProps = {
+  history: [],
+  isAuthenticated: false
+};
+
 
 export default Balance;
