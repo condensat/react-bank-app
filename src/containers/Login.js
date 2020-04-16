@@ -64,7 +64,7 @@ function Login(props) {
               </a>
             </div>
             <div className="provider">
-              <a className="not-active"  href="https://bank.condensat.space/api/v1/auth/facebook">
+              <a href="https://bank.condensat.space/api/v1/auth/facebook">
                 <Image src={FacebookLogo} /><span className="provider">Facebook</span>
               </a>
             </div>

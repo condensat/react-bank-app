@@ -18,7 +18,7 @@ function Signup() {
               <a className="not-active" href="https://bank.condensat.space/api/v1/auth/google">
                 <Image src={GoogleLogo} /><span className="provider">Google</span>
               </a>
-              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/facebook">
+              <a href="https://bank.condensat.space/api/v1/auth/facebook">
                 <Image src={FacebookLogo} /><span className="provider">Facebook</span>
               </a>
               <a href="https://bank.condensat.space/api/v1/auth/github">
