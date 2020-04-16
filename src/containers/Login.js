@@ -59,7 +59,7 @@ function Login(props) {
           <Col className="oauth">
             <h3>Login With</h3>
             <div className="provider">
-              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/google">
+              <a href="https://bank.condensat.space/api/v1/auth/google">
                 <Image src={GoogleLogo} /><span className="provider">Google</span>
               </a>
             </div>
