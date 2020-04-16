@@ -58,3 +58,18 @@
   color: grey;
   margin: 1em;
 }
+
+.Login .not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+
+.Login .not-active img {
+  -webkit-filter: grayscale(75%);
+     -moz-filter: grayscale(75%);
+       -o-filter: grayscale(75%);
+      -ms-filter: grayscale(75%);
+          filter: grayscale(75%); 
+}

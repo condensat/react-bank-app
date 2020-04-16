@@ -62,3 +62,18 @@
   color: grey;
   margin: 1em;
 }
+
+.Signup .not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+
+.Signup .not-active img {
+  -webkit-filter: grayscale(75%);
+     -moz-filter: grayscale(75%);
+       -o-filter: grayscale(75%);
+      -ms-filter: grayscale(75%);
+          filter: grayscale(75%); 
+}

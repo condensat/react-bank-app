@@ -15,10 +15,10 @@ function Signup() {
           <Col className="oauth">
             <h3>Signup With</h3>
             <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/google">
+              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/google">
                 <Image src={GoogleLogo} /><span className="provider">Google</span>
               </a>
-              <a href="https://bank.condensat.space/api/v1/auth/facebook">
+              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/facebook">
                 <Image src={FacebookLogo} /><span className="provider">Facebook</span>
               </a>
               <a href="https://bank.condensat.space/api/v1/auth/github">
@@ -26,7 +26,7 @@ function Signup() {
               </a>
             </div>
             <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/openid">
+              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/openid">
                 <Image src={OpenIdLogo} /><span className="provider"></span>
               </a>
             </div>
