@@ -1,0 +1,46 @@
+.QR .lander {
+  padding: 30px 0;
+  text-align: left;
+}
+
+.QR .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.QR .lander h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.QR .lander p {
+  color: #999;
+}
+
+.QR .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.QR .IconSmall {
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+  color: grey;
+}
+
+.QR .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.QR .Center {
+  text-align: center;
+}
+
+.QR a:hover {
+  font-weight: bold;
+}
