@@ -1,0 +1,91 @@
+.Fiat .lander {
+  padding: 30px 0;
+  text-align: left;
+}
+
+.Fiat .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Fiat .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.Fiat .lander h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.Fiat .lander p {
+  color: #999;
+}
+
+.Fiat a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Fiat a:hover {
+  font-weight: bold;
+}
+
+.Fiat .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.Fiat .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.Fiat .IconSmall {
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+  color: grey;
+}
+
+.Fiat .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Fiat .Center {
+  text-align: center;
+}
+
+.Fiat a:hover {
+  font-weight: bold;
+}
+
+.Fiat .Login {
+  text-align: center;
+}
+
+.Fiat .rows {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Fiat .rows .row {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  text-align: center;
+  vertical-align: center;
+  margin: 32px;
+}
+
+.Fiat div.method img {
+  width: 128px;
+}
