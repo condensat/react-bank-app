@@ -47,3 +47,24 @@
   vertical-align: bottom;
   color: grey;
 }
+
+.Send .rows {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Send .rows .row {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  text-align: center;
+  vertical-align: center;
+  margin: 32px;
+}
+
+.Send div.method img {
+  height: 128px;
+}
