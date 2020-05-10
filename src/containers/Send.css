@@ -8,6 +8,11 @@
   font-weight: 600;
 }
 
+.Send .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
 .Send .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -15,4 +20,30 @@
 
 .Send .lander p {
   color: #999;
+}
+
+.Send a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Send a:hover {
+  font-weight: bold;
+}
+
+.Send .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Send .Login {
+  text-align: center;
+}
+
+.Send .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
 }

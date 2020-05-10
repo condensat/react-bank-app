@@ -3,12 +3,23 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import DepositIcon from '@material-ui/icons/CenterFocusWeak';
+import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./Receive.css";
 
 import * as bank_api from "/js/bank-api.min.js";
 
 import BootstrapTable from 'react-bootstrap-table-next';
+
+const CellAssetIcon = (base64) => {
+  if (base64) {
+    const data = 'data:image/png;base64,'+base64;
+    return (
+      <img className="TickerIcon" src={data} />
+    )
+  }
+  return ""
+}
 
 const CellDeposit = (cell, row) => {
   const isCrypto = row.isCrypto;
@@ -34,17 +45,19 @@ const Receive = (props) => {
   const [accounts, setAccounts] = useState([]);
 
   const columns = [{
-    dataField: 'id',
-    text: 'Account ID',
+    dataField: 'icon',
+    formatter: CellAssetIcon
   }, {
-    dataField: 'currency',
-    text: 'Currency'
+    dataField: 'name',
+    text: 'Name'
+  }, {
+    dataField: 'ticker',
+    text: 'Ticker'
   }, {
     dataField: 'balance',
     text: 'Balance'
   }, {
     dataField: 'deposit',
-    text: 'Deposit',
     formatter: CellDeposit
   }];
 
@@ -52,12 +65,6 @@ const Receive = (props) => {
     dataField: 'id',
     order: 'desc'
   }];
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      props.history.push("/login");
-    }
-  })
 
   useEffect(() => {
     if (accounts.length == 0) {   
@@ -74,7 +81,9 @@ const Receive = (props) => {
         result.accounts.forEach(account => {
           // flatten nested data
           account["id"] = id++;
-          account["currency"] = account.curency.name;
+          account["name"] = account.curency.displayName;
+          account["icon"] = account.curency.icon
+          account["ticker"] = account.curency.ticker;
           account["isCrypto"] = account.curency.isCrypto;
           entries.push(account);
         });
@@ -99,7 +108,13 @@ const Receive = (props) => {
               defaultSorted={defaultSorted}
             />
         </>
-        : <></>
+        : <>
+            <div className="Login">
+              <Link to="/login">
+                <h2><LoginIcon className="Icon Link" />Login</h2>
+              </Link>
+            </div>
+          </>
       }
       </div>
     </div>
