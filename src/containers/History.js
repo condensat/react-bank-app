@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import HistoryIcon from '@material-ui/icons/History';
+import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./History.css";
 
@@ -22,17 +23,14 @@ const History = (props) => {
   const [info, setInfo] = useState({});
 
   const columns = [{
-    dataField: 'id',
-    text: 'Operation ID',
-  }, {
     dataField: 'date',
     text: 'Date'
   }, {
     dataField: 'time',
     text: 'Time'
   }, {
-    dataField: 'currency',
-    text: 'Currency'
+    dataField: 'ticker',
+    text: 'Ticker'
   }, {
     dataField: 'amount',
     text: 'Amount'
@@ -45,12 +43,6 @@ const History = (props) => {
     dataField: 'id',
     order: 'desc'
   }];
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      props.history.push("/login");
-    }
-  })
 
   useEffect(() => {
     if (history.length == 0) {     
@@ -67,9 +59,9 @@ const History = (props) => {
         var from = moment(result.from);
         var to = moment(result.to);
         setInfo({
-          currency: result.currency,
           from: from.format("LLL"),
-          to: to.format("LLL")
+          to: to.format("LLL"),
+          displayName: result.displayName
         })
         
         // construct table data source
@@ -78,7 +70,7 @@ const History = (props) => {
         result.operations.forEach(entry => {
           var m = moment(entry.timestamp);
           entry["id"] = id++;
-          entry["currency"] = result.currency;
+          entry["ticker"] = result.ticker;
           entry["date"] = m.format("LL");
           entry["time"] = m.format("LTS");
           entries.push(entry);
@@ -98,9 +90,10 @@ const History = (props) => {
 
             <h1><HistoryIcon className="Icon" />History</h1>
             <div>
-              <div>{info.currency}</div>
               <div>{info.from}</div>
               <div>{info.to}</div>
+              <div>&nbsp;</div>
+              <div><h3>{info.displayName}</h3></div>
             </div>
             <BootstrapTable
               bootstrap4
@@ -110,7 +103,13 @@ const History = (props) => {
               defaultSorted={defaultSorted}
             />
           </>
-        : <></>
+        : <>
+            <div className="Login">
+              <Link to="/login">
+              <h2><LoginIcon className="Icon Link" />Login</h2>
+              </Link>
+            </div>
+          </>
       }
       </div>
     </div>

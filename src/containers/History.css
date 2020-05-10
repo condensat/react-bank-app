@@ -8,6 +8,11 @@
   font-weight: 600;
 }
 
+.History .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
 .History .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -15,6 +20,15 @@
 
 .History .lander p {
   color: #999;
+}
+
+.Balance a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Balance a:hover {
+  font-weight: bold;
 }
 
 .History .Link {
@@ -32,4 +46,8 @@
   font-size: 1.2em;
   vertical-align: bottom;
   color: grey;
+}
+
+.History .Login {
+  text-align: center;
 }
