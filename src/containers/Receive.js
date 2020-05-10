@@ -2,72 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import DepositIcon from '@material-ui/icons/CenterFocusWeak';
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./Receive.css";
 
 import * as bank_api from "/js/bank-api.min.js";
 
-import BootstrapTable from 'react-bootstrap-table-next';
-
-const CellAssetIcon = (base64) => {
-  if (base64) {
-    const data = 'data:image/png;base64,'+base64;
-    return (
-      <img className="TickerIcon" src={data} />
-    )
-  }
-  return ""
-}
-
-const CellDeposit = (cell, row) => {
-  const isCrypto = row.isCrypto;
+const FiatIcon = (account) => {
+  const icon = account.icon;
+  const isCrypto = account.isCrypto;
+  const displayName = account.displayName;
+  const linkTo = {
+    pathname: isCrypto ? '/qr' : '/fiat',
+    state: account
+  };
 
   return (
-    <>
-    {isCrypto
-      ? 
-      <Link to={{
-        pathname: '/qr',
-        state: row
-      }}>
-        <DepositIcon className="IconSmall" />
+    <div className='row'>
+      <Link to={linkTo}>
+        <img className="TickerIcon" src={'data:image/png;base64,'+icon} />
+        <p>{displayName}</p>
       </Link>
-      : <></>
-    }
-    </>
+    </div>
   )
 }
 
 const Receive = (props) => {
   const isAuthenticated = props.isAuthenticated
-  const [accounts, setAccounts] = useState([]);
-
-  const columns = [{
-    dataField: 'icon',
-    formatter: CellAssetIcon
-  }, {
-    dataField: 'name',
-    text: 'Name'
-  }, {
-    dataField: 'ticker',
-    text: 'Ticker'
-  }, {
-    dataField: 'balance',
-    text: 'Balance'
-  }, {
-    dataField: 'deposit',
-    formatter: CellDeposit
-  }];
-
-  const defaultSorted = [{
-    dataField: 'id',
-    order: 'desc'
-  }];
+  const [accountsFiat, setAccountsFiat] = useState([]);
+  const [accountsCrypto, setAccountsCrypto] = useState([]);
 
   useEffect(() => {
-    if (accounts.length == 0) {   
+    if ((accountsFiat.length + accountsCrypto.length) == 0) {   
       // fetch accounts info
       bank_api.accountList({ rateBase: "CHF" }, (err, result) => {
         if (err) {
@@ -77,21 +43,43 @@ const Receive = (props) => {
 
         // construct table data source
         var id = 0;
-        var entries = [];
+        var entriesCrypto = [];
+        var entriesFiat = [];
         result.accounts.forEach(account => {
           // flatten nested data
           account["id"] = id++;
-          account["name"] = account.curency.displayName;
-          account["icon"] = account.curency.icon
-          account["ticker"] = account.curency.ticker;
           account["isCrypto"] = account.curency.isCrypto;
-          entries.push(account);
+          account["displayName"] = account.curency.displayName;
+          if (!account.curency.displayName) {
+            account["displayName"] = "No Name"
+          }
+          account["icon"] = account.curency.icon
+
+          // skip asset related account
+          if (account.curency.isAsset && account.curency.ticker != "TBTC") {
+            if (account.curency.displayName || account.curency.icon) {
+              if (account.curency.icon) {
+                return
+              } else {
+                return
+              }
+            } else {
+              return
+            }
+          }
+
+          if (account.curency.isCrypto) {
+            entriesCrypto.push(account);
+          } else {
+            entriesFiat.push(account);
+          }
         });
-        
-        setAccounts(entries)
+
+        setAccountsFiat(entriesFiat);
+        setAccountsCrypto(entriesCrypto);
       });
     }
-  }, [accounts]);
+  }, [accountsFiat, accountsCrypto]);
 
   return (
     <div className="Receive">
@@ -99,14 +87,19 @@ const Receive = (props) => {
       {isAuthenticated
         ? <>
             <h1>Receive funds</h1>
-            <p>Account</p>
-            <BootstrapTable
-              bootstrap4
-              keyField="id"
-              data={accounts}
-              columns={columns}
-              defaultSorted={defaultSorted}
-            />
+            <div>&nbsp;</div>
+            <h2>Fiat</h2>
+            <div className='rows'>
+              {accountsFiat.map(account => {
+                return FiatIcon(account);
+              })}
+            </div>
+            <h2>Crypto</h2>
+            <div className='rows'>
+              {accountsCrypto.map(account => {
+                return FiatIcon(account);
+              })}
+            </div>
         </>
         : <>
             <div className="Login">
