@@ -4,7 +4,7 @@ import QRCode from "qrcode-react";
 import PropTypes from "prop-types";
 
 import CondensatLogo from "/img/condensat.png";
-import DepositIcon from '@material-ui/icons/CenterFocusWeak';
+import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./QR.css";
 
@@ -14,23 +14,28 @@ var apiNexDeposit = (accountId, callback) => {
   bank_api.walletNextDeposit({ accountId }, callback);
 }
 
+const assetIcon = (base64) => {
+  if (base64) {
+    const data = 'data:image/png;base64,'+base64;
+    return (
+      <img className="TickerIcon" src={data} />
+    )
+  }
+  return ""
+}
+
 const QR = (props) => {
   const isAuthenticated = props.isAuthenticated
   const [nextDeposit, setNextDeposit] = useState();
   const [addressNotAvailable, setAddressNotAvailable] = useState("");
 
   const location = useLocation();
-  const deposit = location.state ? location.state : {accountId: "", currency: ""};
+  const deposit = location.state ? location.state : {accountId: "", displayName: "", icon: null};
 
-  const currency = deposit.currency;
+  const displayName = deposit.displayName;
+  const qrIcon = CondensatLogo
   const publicAddress = nextDeposit ? nextDeposit.publicAddress : "";
   const url = nextDeposit ? nextDeposit.url : "";
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      props.history.push("/login");
-    }
-  })
 
   useEffect(() => {
     if (!nextDeposit) {   
@@ -51,18 +56,24 @@ const QR = (props) => {
       <div className="lander">
       {isAuthenticated
         ? <>
-            <Link className="Link back" to="/receive"><DepositIcon className="Icon" />Receive</Link>
-            <h1>Deposit {currency}</h1>
+            <a className="Link back" onClick={props.history.goBack}>Back</a>
+            <h1>{assetIcon(deposit.icon)} Deposit {displayName}</h1>
             {publicAddress
               ? <div className="Center">
-                <QRCode size="172" logo={CondensatLogo} logoWidth="30" value={{url}} />
+                <QRCode size="172" logo={qrIcon} logoWidth="32" value={publicAddress} />
                 <p />
                 <a className="Link" href={url} target="_blank" rel="noopener noreferrer">{publicAddress}</a>
               </div>
               : <>{addressNotAvailable}</>
             }
         </>
-        : <></>
+        : <>
+            <div className="Login">
+              <Link to="/login">
+                <h2><LoginIcon className="Icon Link" />Login</h2>
+              </Link>
+            </div>
+          </>
       }
       </div>
     </div>

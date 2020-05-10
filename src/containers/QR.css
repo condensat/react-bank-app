@@ -8,6 +8,11 @@
   font-weight: 600;
 }
 
+.QR .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
 .QR .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -15,6 +20,21 @@
 
 .QR .lander p {
   color: #999;
+}
+
+.QR a {
+  color: grey;
+  text-decoration: none;
+}
+
+.QR a:hover {
+  font-weight: bold;
+}
+
+.QR .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
 }
 
 .QR .Icon {
@@ -43,4 +63,8 @@
 
 .QR a:hover {
   font-weight: bold;
+}
+
+.QR .Login {
+  text-align: center;
 }
