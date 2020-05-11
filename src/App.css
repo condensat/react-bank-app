@@ -30,6 +30,14 @@
   text-decoration: none;
 }
 
+.App .right {
+  padding-left: 16px;
+}
+
+.App .left {
+  width: 120px;
+}
+
 .App .Icon {
   margin-top: 3px;
   vertical-align: top;

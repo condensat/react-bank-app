@@ -1,66 +1,58 @@
-.History .lander {
+.OTC .lander {
   padding: 30px 0;
   text-align: left;
 }
 
-.History .lander h1 {
+.OTC .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 
-.History .lander h2 {
+.OTC .lander h2 {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
 
-.History .lander h3 {
+.OTC .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 
-.History .lander p {
+.OTC .lander p {
   color: #999;
 }
 
-.History a {
+.OTC a {
   color: grey;
   text-decoration: none;
 }
 
-.History a:hover {
+.OTC a:hover {
   font-weight: bold;
 }
 
-.History .Link {
+.OTC .Link {
   text-align: center;
   color: grey;
   cursor: pointer;
   text-decoration: none;
 }
 
-.History .TickerIcon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 15px;
-}
-
-.History .Icon {
-  font-size: 1.1em;
-  vertical-align: bottom;
-  color: grey;
-}
-
-.History a:hover {
+.OTC a:hover {
   font-weight: bold;
 }
 
-.History .Icon {
+.OTC .Icon {
   font-size: 1.2em;
   vertical-align: bottom;
   color: grey;
 }
 
-.History .Login {
+.OTC .Login {
   padding: 10px 60px;
   text-align: left;
+}
+
+.OTC .soon {
+  padding: 20px 30px;
 }

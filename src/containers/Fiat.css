@@ -1,77 +1,76 @@
-.Receive .lander {
+.Fiat .lander {
   padding: 30px 0;
   text-align: left;
 }
 
-.Receive .lander h1 {
+.Fiat .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 
-.Receive .lander h2 {
+.Fiat .lander h2 {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
 
-.Receive .lander h3 {
+.Fiat .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 
-.Receive .lander p {
+.Fiat .lander p {
   color: #999;
 }
 
-.Receive a {
+.Fiat a {
   color: grey;
   text-decoration: none;
 }
 
-.Receive a:hover {
+.Fiat a:hover {
   font-weight: bold;
 }
 
-.Receive .Icon {
+.Fiat .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.Fiat .Icon {
   font-size: 1.1em;
   vertical-align: bottom;
   color: grey;
 }
 
-.Receive .TickerIcon {
-  width: 72px;
-  height: 72px;
-  text-align: center;
-}
-
-.Receive a {
-  color: grey;
-  text-decoration: none;
-}
-
-.Receive a:hover {
-  font-weight: bold;
-}
-
-.Receive .IconSmall {
+.Fiat .IconSmall {
   font-size: 1.6em;
   text-align: center;
   vertical-align: middle;
   color: grey;
 }
 
-.Receive .Link {
+.Fiat .Link {
   text-align: center;
   color: grey;
   cursor: pointer;
   text-decoration: none;
 }
 
-.Receive .Login {
+.Fiat .Center {
+  text-align: center;
+}
+
+.Fiat a:hover {
+  font-weight: bold;
+}
+
+.Fiat .Login {
   padding: 10px 60px;
   text-align: left;
 }
 
-.Receive .rows {
+.Fiat .rows {
   height: 100%;
   width: 100%;
   display: flex;
@@ -79,20 +78,15 @@
   align-items: center;
 }
 
-.Receive .rows .row {
+.Fiat .rows .row {
   display: inline-block;
   width: 128px;
   height: 128px;
   text-align: center;
-  vertical-align: top;
-  margin: 12px;
+  vertical-align: center;
+  margin: 32px;
 }
 
-.Receive .sideshift {
-  text-align: right;
-}
-
-.Receive .sideshift img {
-  width: 24px;
-  margin-left: 8px;
+.Fiat div.method img {
+  width: 128px;
 }
