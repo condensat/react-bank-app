@@ -1,0 +1,58 @@
+.Swap .lander {
+  padding: 30px 0;
+  text-align: left;
+}
+
+.Swap .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Swap .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.Swap .lander h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.Swap .lander p {
+  color: #999;
+}
+
+.Swap a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Swap a:hover {
+  font-weight: bold;
+}
+
+.Swap .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Swap a:hover {
+  font-weight: bold;
+}
+
+.Swap .Icon {
+  font-size: 1.2em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.Swap .Login {
+  padding: 10px 60px;
+  text-align: left;
+}
+
+.Swap .soon {
+  padding: 20px 30px;
+}
