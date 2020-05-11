@@ -22,13 +22,6 @@ const CellAssetIcon = (base64) => {
   return ""
 }
 
-const CellNotionalBalance = (balance) => {
-  if (balance) {
-    return balance
-  }
-  return ""
-}
-
 const CellHistory = (cell, row) => {
   return (
     <Link to={{
@@ -69,13 +62,6 @@ const Balance = (props) => {
   }, {
     dataField: 'displayName',
     text: 'Name'
-  }, {
-    dataField: 'notionalTicker',
-    text: 'Notional Ticker'
-  }, {
-    dataField: 'notionalBalance',
-    text: 'Notional Balance',
-    formatter: CellNotionalBalance
   }, {
     dataField: 'ticker',
     text: 'Ticker'
