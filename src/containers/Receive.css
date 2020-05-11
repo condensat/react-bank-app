@@ -38,8 +38,8 @@
 }
 
 .Receive .TickerIcon {
-  width: 96px;
-  height: 96px;
+  width: 72px;
+  height: 72px;
   text-align: center;
 }
 
@@ -81,11 +81,11 @@
 
 .Receive .rows .row {
   display: inline-block;
-  width: 192px;
-  height: 192px;
+  width: 128px;
+  height: 128px;
   text-align: center;
   vertical-align: top;
-  margin: 16px;
+  margin: 12px;
 }
 
 .Receive .sideshift {

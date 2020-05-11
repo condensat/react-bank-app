@@ -33,6 +33,7 @@ const Receive = (props) => {
   const isAuthenticated = props.isAuthenticated
   const [accountsFiat, setAccountsFiat] = useState([]);
   const [accountsCrypto, setAccountsCrypto] = useState([]);
+  const [accountsAsset, setAccountsAsset] = useState([]);
 
   useEffect(() => {
     if ((accountsFiat.length + accountsCrypto.length) == 0) {   
@@ -47,6 +48,7 @@ const Receive = (props) => {
         var id = 0;
         var entriesCrypto = [];
         var entriesFiat = [];
+        var entriesAsset = [];
         result.accounts.forEach(account => {
           // flatten nested data
           account["id"] = id++;
@@ -61,6 +63,7 @@ const Receive = (props) => {
           if (account.curency.isAsset && account.curency.ticker != "TBTC") {
             if (account.curency.displayName || account.curency.icon) {
               if (account.curency.icon) {
+                entriesAsset.push(account);
                 return
               } else {
                 return
@@ -79,9 +82,10 @@ const Receive = (props) => {
 
         setAccountsFiat(entriesFiat);
         setAccountsCrypto(entriesCrypto);
+        setAccountsAsset(entriesAsset);
       });
     }
-  }, [accountsFiat, accountsCrypto]);
+  }, [accountsFiat, accountsCrypto, accountsAsset]);
 
   return (
     <div className="Receive">
@@ -99,6 +103,12 @@ const Receive = (props) => {
             <h2>Crypto</h2>
             <div className='rows'>
               {accountsCrypto.map(account => {
+                return FiatIcon(account);
+              })}
+            </div>
+            <h2>Asset</h2>
+            <div className='rows'>
+              {accountsAsset.map(account => {
                 return FiatIcon(account);
               })}
             </div>
