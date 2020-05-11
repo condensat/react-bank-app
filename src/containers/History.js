@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 import moment from 'moment';
 
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import HistoryIcon from '@material-ui/icons/History';
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
@@ -86,7 +85,7 @@ const History = (props) => {
       <div className="lander">
       {isAuthenticated
         ? <>
-            <Link className="Link back" to="/balance"><AccountBalanceWalletIcon className="Icon" />Balances</Link>
+            <a className="Link back" onClick={props.history.goBack}>Back</a>
 
             <h1><HistoryIcon className="Icon" />History</h1>
             <div>
