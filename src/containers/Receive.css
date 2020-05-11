@@ -67,7 +67,8 @@
 }
 
 .Receive .Login {
-  text-align: center;
+  padding: 10px 60px;
+  text-align: left;
 }
 
 .Receive .rows {

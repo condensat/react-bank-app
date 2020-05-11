@@ -22,12 +22,12 @@
   color: #999;
 }
 
-.Balance a {
+.History a {
   color: grey;
   text-decoration: none;
 }
 
-.Balance a:hover {
+.History a:hover {
   font-weight: bold;
 }
 
@@ -49,5 +49,6 @@
 }
 
 .History .Login {
-  text-align: center;
+  padding: 10px 60px;
+  text-align: left;
 }

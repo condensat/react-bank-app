@@ -59,6 +59,8 @@
 
 .QR .Center {
   text-align: center;
+  font-size: 8px;
+  font-size: 1vw;
 }
 
 .QR a:hover {
@@ -66,5 +68,6 @@
 }
 
 .QR .Login {
-  text-align: center;
+  padding: 10px 60px;
+  text-align: left;
 }

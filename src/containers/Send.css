@@ -39,7 +39,8 @@
 }
 
 .Send .Login {
-  text-align: center;
+  padding: 10px 60px;
+  text-align: left;
 }
 
 .Send .Icon {
