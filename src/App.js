@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem, InputGroup } from "react-bootstrap";
+import { Nav, Navbar, NavItem, NavDropdown, Container, Row, Col, InputGroup } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useCookies } from 'react-cookie';
 
@@ -18,7 +18,7 @@ import "./App.css";
 var sessionState = function(props) { }
 
 function App(props) {
-  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [isAuthenticated, userHasAuthenticated] = useState(true);
 
   sessionState({ history: props.history, isAuthenticated, userHasAuthenticated });
 
@@ -41,16 +41,6 @@ function App(props) {
         {isAuthenticated
           ? <Navbar.Collapse className="mr-auto" id="basic-navbar-nav">
             <NavDropdown className="menu" title="Menu" id="basic-nav-dropdown">
-              <LinkContainer to="/balance">
-                <NavDropdown.Item>Balance</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/receive">
-                <NavDropdown.Item>Receive funds</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/send">
-                <NavDropdown.Item>Send funds</NavDropdown.Item>
-              </LinkContainer>
-              <NavDropdown.Divider />
               <LinkContainer to="/settings">
                 <NavDropdown.Item>Settings</NavDropdown.Item>
               </LinkContainer>
@@ -76,7 +66,37 @@ function App(props) {
           </InputGroup>
         </Nav>
       </Navbar>
-      <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+      <Container>
+          <Row>
+          {isAuthenticated
+            ? <Col className="menu" xs lg="2">
+                <div className="left">
+                  <NavDropdown.Divider />
+                  <LinkContainer to="/balance">
+                    <NavDropdown.Item>Accounts</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/receive">
+                    <NavDropdown.Item>Deposit</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/send">
+                    <NavDropdown.Item>Send</NavDropdown.Item>
+                  </LinkContainer>
+                    <NavDropdown.Divider />
+                  <LinkContainer to="/swap">
+                    <NavDropdown.Item>Swap</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/otc">
+                    <NavDropdown.Item>OTC</NavDropdown.Item>
+                  </LinkContainer>
+                </div>
+              </Col>
+            : <></>
+          }
+          <Col className="right">
+            <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

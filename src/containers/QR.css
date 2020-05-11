@@ -1,62 +1,83 @@
-.Balance .lander {
+.QR .lander {
   padding: 30px 0;
   text-align: left;
 }
 
-.Balance .lander h1 {
+.QR .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 
-.Balance .lander h2 {
+.QR .lander h2 {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
 
-.Balance .lander h3 {
+.QR .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 
-.Balance .lander p {
+.QR .lander p {
   color: #999;
 }
 
-.Balance a {
+.QR a {
   color: grey;
   text-decoration: none;
 }
 
-.Balance a:hover {
+.QR a:hover {
   font-weight: bold;
 }
 
-.Balance .Icon {
+.QR .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.QR .Icon {
   font-size: 1.1em;
   vertical-align: bottom;
   color: grey;
 }
 
-.Balance .TickerIcon {
-  width: 32px;
-  height: 32px;
-}
-
-.Balance .IconSmall {
+.QR .IconSmall {
   font-size: 1.6em;
   text-align: center;
   vertical-align: middle;
   color: grey;
 }
 
-.Balance .Link {
+.QR .Link {
   text-align: center;
   color: grey;
   cursor: pointer;
   text-decoration: none;
 }
 
-.Balance .Login {
+.QR .Center {
+  border: 0px;
+  text-align: center;
+  font-size: 8px;
+  font-size: 1vw;
+}
+
+.QR a:hover {
+  font-weight: bold;
+}
+
+.QR .Login {
   padding: 10px 60px;
   text-align: left;
+}
+
+.QR .sideshift {
+  text-align: right;
+}
+
+.QR .sideshift img {
+  width: 24px;
+  margin-left: 8px;
 }

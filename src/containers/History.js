@@ -4,35 +4,43 @@ import PropTypes from "prop-types";
 
 import moment from 'moment';
 
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import HistoryIcon from '@material-ui/icons/History';
+import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./History.css";
 
 import * as bank_api from "/js/bank-api.min.js";
 import BootstrapTable from 'react-bootstrap-table-next';
 
+const assetIcon = (base64) => {
+  if (base64) {
+    const data = 'data:image/png;base64,'+base64;
+    return (
+      <img className="TickerIcon" src={data} />
+    )
+  }
+  return "History - "
+}
+
 const History = (props) => {
   const isAuthenticated = props.isAuthenticated
   const location = useLocation();
-  const account = location.state ? location.state : {accountId: 0}
+  const account = location.state ? location.state : {accountId: "", displayName: "", ticker:"", icon: null};
   const accountId = account.accountId;
+  const displayName = account.displayName;
+  const ticker = account.ticker;
 
   const [history, setHistory] = useState([]);
   const [info, setInfo] = useState({});
 
   const columns = [{
-    dataField: 'id',
-    text: 'Operation ID',
-  }, {
     dataField: 'date',
     text: 'Date'
   }, {
     dataField: 'time',
     text: 'Time'
   }, {
-    dataField: 'currency',
-    text: 'Currency'
+    dataField: 'ticker',
+    text: 'Ticker'
   }, {
     dataField: 'amount',
     text: 'Amount'
@@ -45,12 +53,6 @@ const History = (props) => {
     dataField: 'id',
     order: 'desc'
   }];
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      props.history.push("/login");
-    }
-  })
 
   useEffect(() => {
     if (history.length == 0) {     
@@ -67,9 +69,9 @@ const History = (props) => {
         var from = moment(result.from);
         var to = moment(result.to);
         setInfo({
-          currency: result.currency,
           from: from.format("LLL"),
-          to: to.format("LLL")
+          to: to.format("LLL"),
+          displayName: result.displayName
         })
         
         // construct table data source
@@ -78,7 +80,7 @@ const History = (props) => {
         result.operations.forEach(entry => {
           var m = moment(entry.timestamp);
           entry["id"] = id++;
-          entry["currency"] = result.currency;
+          entry["ticker"] = result.ticker;
           entry["date"] = m.format("LL");
           entry["time"] = m.format("LTS");
           entries.push(entry);
@@ -94,13 +96,13 @@ const History = (props) => {
       <div className="lander">
       {isAuthenticated
         ? <>
-            <Link className="Link back" to="/balance"><AccountBalanceWalletIcon className="Icon" />Balances</Link>
-
-            <h1><HistoryIcon className="Icon" />History</h1>
+            <a className="Link back" onClick={props.history.goBack}>Back</a>
+            <h1>{assetIcon(account.icon)} {displayName} - {ticker}</h1>
             <div>
-              <div>{info.currency}</div>
               <div>{info.from}</div>
               <div>{info.to}</div>
+              <div>&nbsp;</div>
+              <div><h3>{info.displayName}</h3></div>
             </div>
             <BootstrapTable
               bootstrap4
@@ -110,7 +112,13 @@ const History = (props) => {
               defaultSorted={defaultSorted}
             />
           </>
-        : <></>
+        : <>
+            <div className="Login">
+              <Link to="/login">
+              <h2><LoginIcon className="Icon Link" />Login</h2>
+              </Link>
+            </div>
+          </>
       }
       </div>
     </div>

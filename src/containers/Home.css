@@ -1,11 +1,16 @@
 .Home .lander {
-  padding: 30px 0;
-  text-align: center;
+  padding: 10px 60px;
+  text-align: left;
 }
 
 .Home .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+}
+
+.Home .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
 }
 
 .Home .lander h3 {
@@ -15,4 +20,32 @@
 
 .Home .lander p {
   color: #999;
+}
+
+.Home .lander p {
+  color: #999;
+}
+
+.Home a {
+  color: grey;
+  text-decoration: none;
+}
+
+.Home a:hover {
+  font-weight: bold;
+}
+
+.Home .welcome {
+  padding: 20px 30px;
+}
+
+.Home .Login {
+  padding: 10px 60px;
+  text-align: left;
+}
+
+.Home .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
 }
