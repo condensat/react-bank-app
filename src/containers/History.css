@@ -38,6 +38,18 @@
   text-decoration: none;
 }
 
+.History .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.History .Icon {
+  font-size: 1.1em;
+  vertical-align: bottom;
+  color: grey;
+}
+
 .History a:hover {
   font-weight: bold;
 }
