@@ -15,6 +15,7 @@ import Fiat from "./containers/Fiat";
 import QR from "./containers/QR";
 import Send from "./containers/Send";
 import Swap from "./containers/Swap";
+import OTC from "./containers/OTC";
 
 import TooOld from "./containers/TooOld";
 import NotFound from "./containers/NotFound";
@@ -35,6 +36,7 @@ function Routes({ appProps }) {
       <AppliedRoute appProps={appProps} path="/qr" exact component={QR} />
       <AppliedRoute appProps={appProps} path="/send" exact component={Send} />
       <AppliedRoute appProps={appProps} path="/swap" exact component={Swap} />
+      <AppliedRoute appProps={appProps} path="/otc" exact component={OTC} />
 
       {/* fallback */}
       <AppliedRoute appProps={appProps} path="/tooold" exact component={TooOld} />
