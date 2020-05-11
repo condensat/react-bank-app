@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Image } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import QRCode from "qrcode-react";
 import PropTypes from "prop-types";
 
 import CondensatLogo from "/img/condensat.png";
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
+import SideShiftLogo from "/img/sideshift.png";
 
 import "./QR.css";
 
@@ -63,7 +65,14 @@ const QR = (props) => {
                 <QRCode size="128" logo={qrIcon} logoWidth="24" value={publicAddress} />
                 <p />
                 <a className="Link" href={url} target="_blank" rel="noopener noreferrer">{publicAddress}</a>
+                <p />
+                <div className="sideshift">
+                  <a className="Link" href="https://sideshift.ai/a/SpUXYDG9v" target="_blank" rel="noopener noreferrer">
+                    Shift some L-BTC<Image src={SideShiftLogo} />
+                  </a>
+                </div>
               </div>
+
               : <>{addressNotAvailable}</>
             }
         </>

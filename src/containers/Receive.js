@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
+import SideShiftLogo from "/img/sideshift.png";
 
 import "./Receive.css";
 
@@ -99,6 +101,11 @@ const Receive = (props) => {
               {accountsCrypto.map(account => {
                 return FiatIcon(account);
               })}
+            </div>
+            <div className="sideshift">
+              <a className="Link" href="https://sideshift.ai/a/SpUXYDG9v" target="_blank" rel="noopener noreferrer">
+              Shift some L-BTC<Image src={SideShiftLogo} />
+              </a>
             </div>
         </>
         : <>
