@@ -62,7 +62,7 @@ const QR = (props) => {
             <h1>{assetIcon(deposit.icon)} Deposit {displayName}</h1>
             {publicAddress
               ? <div className="Center">
-                <QRCode size="128" logo={qrIcon} logoWidth="24" value={publicAddress} />
+                <QRCode size="128" renderAs="svg" level="M" logo={qrIcon} logoWidth="24" value={publicAddress} />
                 <p />
                 <a className="Link" href={url} target="_blank" rel="noopener noreferrer">{publicAddress}</a>
                 <p />
