@@ -8,6 +8,8 @@ import SWIFTLogo from "/img/SWIFT.png";
 import SEPALogo from "/img/SEPA.png";
 import swapLogo from "/img/swap.png";
 import p2epLogo from "/img/p2ep.png";
+import LedgerIcon from "/img/LedgerIcon.png";
+
 
 import "./Send.css";
 
@@ -27,6 +29,7 @@ const Send = (props) => {
             </div>
             <h1>Crypto</h1>
             <div className="rows">
+            <div className="row method"><Image src={LedgerIcon} rounded /><p>Ledger</p></div>
             <div className="row method"><Image src={swapLogo} rounded /><p>Liquid Swap</p></div>
             <div className="row method"><Image src={p2epLogo} rounded /><p>Pay to EndPoint</p></div>
             </div>
