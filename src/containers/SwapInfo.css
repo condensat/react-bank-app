@@ -1,80 +1,86 @@
-.Swap .lander {
+.SwapInfo .lander {
   padding: 30px 0;
   text-align: left;
 }
 
-.Swap .lander h1 {
+.SwapInfo .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 
-.Swap .lander h2 {
+.SwapInfo .lander h2 {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
 
-.Swap .lander h3 {
+.SwapInfo .lander h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 
-.Swap .lander p {
+.SwapInfo .lander p {
   color: #999;
 }
 
-.Swap a {
+.SwapInfo a {
   color: grey;
   text-decoration: none;
 }
 
-.Swap a:hover {
+.SwapInfo a:hover {
   font-weight: bold;
 }
 
-.Swap .Link {
+.SwapInfo .Link {
   text-align: center;
   color: grey;
   cursor: pointer;
   text-decoration: none;
 }
 
-.Swap a:hover {
+.SwapInfo a:hover {
   font-weight: bold;
 }
 
-.Swap .Icon {
+.SwapInfo .Icon {
   font-size: 1.2em;
   vertical-align: bottom;
   color: grey;
 }
 
-.Swap .SwapAction {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-.Swap .SwapIcon {
-  font-size: 2.2em;
-  margin-right: 0.5em;
-  vertical-align: bottom;
-  color: grey;
-}
-
-.Swap .Login {
+.SwapInfo .Login {
   padding: 10px 60px;
   text-align: left;
 }
 
-.Swap .IconSmall {
+.SwapInfo .IconSmall {
   font-size: 1.6em;
   text-align: center;
   vertical-align: middle;
   color: grey;
 }
 
-.Swap .Link {
+.SwapInfo .Link {
   text-align: center;
   color: grey;
   cursor: pointer;
   text-decoration: none;
+}
+
+.SwapInfo textarea {
+  font-family: "PT Mono", Courier, monospace;  
+  font-weight: bold;
+  color: grey;
+  outline: none;
+}
+
+.SwapInfo textarea:focus {
+  color: grey;
+}
+
+.SwapInfo .SwapIcon {
+  font-size: 2.2em;
+  margin-right: 0.5em;
+  vertical-align: bottom;
+  color: grey;
 }

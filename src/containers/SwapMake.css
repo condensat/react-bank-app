@@ -1,0 +1,124 @@
+.SwapMake .lander {
+  padding: 30px 0;
+  text-align: left;
+}
+
+.SwapMake .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.SwapMake .lander h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.SwapMake .lander h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+.SwapMake .lander p {
+  color: #999;
+}
+
+.SwapMake a {
+  color: grey;
+  text-decoration: none;
+}
+
+.SwapMake a:hover {
+  font-weight: bold;
+}
+
+.SwapMake .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.SwapMake a:hover {
+  font-weight: bold;
+}
+
+.SwapMake .Icon {
+  font-size: 1.2em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.SwapMake .Login {
+  padding: 10px 60px;
+  text-align: left;
+}
+
+.SwapMake .IconSmall {
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+  color: grey;
+}
+
+.SwapMake .Link {
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.SwapMake textarea {
+  font-family: "PT Mono", Courier, monospace;  
+  font-weight: bold;
+  color: grey;
+  outline: none;
+}
+
+.SwapMake textarea:focus {
+  color: grey;
+}
+
+.SwapMake .SwapIcon {
+  font-size: 2.2em;
+  margin-right: 0.5em;
+  vertical-align: bottom;
+  color: grey;
+}
+
+.SwapMake .rows {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SwapMake .rows .row {
+  display: inline-block;
+  width: 256px;
+  text-align: center;
+  vertical-align: center;
+  margin: 16px;
+}
+
+.SwapMake .rows .sep {
+  width: 2.2em;
+  margin: 0px;
+}
+
+.Pop h5 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+img.assetIcon  {
+  height: 24px;
+  margin-right: 5px;
+}
+
+.SwapMake .IconSwap {
+  font-size: 2.2em;
+  vertical-align: bottom;
+  color: grey;
+}
+

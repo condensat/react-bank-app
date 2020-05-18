@@ -5920,6 +5920,11 @@ typeface-open-sans@^0.0.75:
   resolved "https://registry.yarnpkg.com/typeface-open-sans/-/typeface-open-sans-0.0.75.tgz#20d0c330f14c0c40463c334adbedd6005389abe4"
   integrity sha512-0lLmB7pfj113OP4T78SbpSmC4OCdFQ0vUxdSXQccsSb6qF76F92iEuC/DghFgmPswTyidk8+Hwf+PS/htiJoRQ==
 
+typeface-pt-mono@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-pt-mono/-/typeface-pt-mono-0.0.72.tgz#1ce4a636d335c77bb01712ba136a99f764647a04"
+  integrity sha512-7AMVSvB0oT2TDPyCJlVKSIxPjspI08Rlhg/SEUwQORSyalZgtSt2pDJEvVZuJbBIak70oB2ts6vL4iunYPUGKA==
+
 typeface-pt-serif@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-pt-serif/-/typeface-pt-serif-0.0.72.tgz#d8761c02a298bd0203e53a2028081b6f03246cd5"
