@@ -10,6 +10,7 @@ import "./Login.css";
 import GoogleLogo from "/img/auth/google.png";
 import FacebookLogo from "/img/auth/facebook.png";
 import GithubLogo from "/img/auth/github.png";
+import TwitterLogo from "/img/auth/twitter.png";
 import OpenIdLogo from "/img/auth/openid_connect.png";
 
 function Login(props) {
@@ -71,6 +72,11 @@ function Login(props) {
             <div className="provider">
               <a href="https://bank.condensat.space/api/v1/auth/github">
                 <Image src={GithubLogo} /><span className="provider">GitHub</span>
+              </a>
+            </div>
+            <div className="provider">
+              <a href="https://bank.condensat.space/api/v1/auth/twitter">
+                <Image src={TwitterLogo} /><span className="provider">Twitter</span>
               </a>
             </div>
             <div className="provider">
