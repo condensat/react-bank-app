@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -43,6 +44,7 @@ const Swap = (props) => {
                 <SwapTakeIcon className="SwapIcon" /> Take an offer
               </Link>
             </div>
+            <Alert key="beta-id" variant="danger">We are still in <Alert.Link href="#">Beta</Alert.Link>, please use with care</Alert>
           </>
         : <>
             <div className="Login">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Popover, OverlayTrigger, ListGroup, FormControl, InputGroup } from "react-bootstrap";
+import { Button, Popover, OverlayTrigger, ListGroup, FormControl, InputGroup, Alert } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -222,6 +222,7 @@ const SwapMake = (props) => {
                 <li>Amount: {amountR}</li>
               </ul>  
               <SwapMakeIcon className="SwapIcon" /> Generate Offer
+              <Alert key="beta-id" variant="danger">We are still in <Alert.Link href="#">Beta</Alert.Link>, please use with care</Alert>
             </div>
           </>
         : <>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Col } from "react-bootstrap";
+import { Button, Form, Col, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -96,6 +96,7 @@ const SwapInfo = (props) => {
             </Link>
           : <></>
         }
+        <Alert key="beta-id" variant="danger">We are still in <Alert.Link href="#">Beta</Alert.Link>, please use with care</Alert>
       </div>
     )
   }
