@@ -49,6 +49,20 @@
   color: grey;
 }
 
+.Send .TickerIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.Send .IconSmall {
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+  color: grey;
+}
+
+
 .Send .rows {
   height: 100%;
   width: 100%;
