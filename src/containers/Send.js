@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, Button, Form, FormControl, InputGroup, Alert } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -29,6 +29,8 @@ const Send = (props) => {
 
   const [amount, setAmount] = useState(0.0)
   const [publicAddress, setAddress] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
+  const [withdrawId, setWithdrawId] = useState("")
 
   const location = useLocation();
   const account = location.state ? location.state : {accountId: "", displayName: "", icon: null};
@@ -42,24 +44,37 @@ const Send = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (parseFloat(amount) <= 0.0) {
-      console.log("invalid amount");
+      setErrorMessage("Invalid amount")
       return
     }
     if (publicAddress.length == 0) {
-      console.log("invalid publicAddress");
+      setErrorMessage("Invalid publicAddress")
       return
     }
-    
+
+    // reset error message
+    setErrorMessage("")
+
     // call bank wallet api
     bank_api.walletSendFunds({accountId, publicAddress, "amount": parseFloat(amount)}, (err, result) => {
       if (err) {
         console.error("walletSendFunds failed", err);
+
+        setErrorMessage(err.error)
         return;
       }
       const withdrawId = result.withdrawId ? result.withdrawId : "no withdrawId";
       console.log("withdrawId:", withdrawId);
+
+      setAmount(0.0)
+      setAddress("")
+      setWithdrawId(withdrawId)
     })
   };
+
+
+  useEffect(() => {
+  }, [publicAddress, amount, errorMessage, withdrawId]);
 
   return (
     <div className="Send">
@@ -93,6 +108,7 @@ const Send = (props) => {
                         placeholder="0.00000000"
                         aria-label="0.00000000"
                         aria-describedby="send-amount"
+                        value={ amount }
                       />
                     </InputGroup>
                     <InputGroup className="mb-3" onChange={e => setAddress(e.target.value)} >
@@ -103,10 +119,13 @@ const Send = (props) => {
                         placeholder="public address"
                         aria-label="public address"
                         aria-describedby="send-publicaddress"
+                        value={ publicAddress }
                       />
                     </InputGroup>
                   </Form.Row>
                   <Button className="btn btn-light" disabled={!validateForm()} type="submit">Submit</Button>
+                  { withdrawId && <Alert key="witdhraw-id" variant="success"> Withdraw order sent! </Alert> }
+                  { errorMessage && <Alert key="send-error" variant="danger"> { errorMessage } </Alert> }
                 </Form>
 
                 <Alert key="beta-id" variant="danger">We are still in <Alert.Link href="#">Beta</Alert.Link>, please use with care</Alert>
