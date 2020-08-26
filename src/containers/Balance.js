@@ -6,6 +6,7 @@ import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import DepositIcon from '@material-ui/icons/CenterFocusWeak';
 import HistoryIcon from '@material-ui/icons/History';
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
+import SendIcon from '@material-ui/icons/Send';
 
 import "./Balance.css";
 
@@ -52,6 +53,27 @@ const CellDeposit = (cell, row) => {
   )
 }
 
+const CellSend = (cell, row) => {
+  const isCrypto = row.isCrypto;
+
+  return (
+    <>
+    {isCrypto
+      ? 
+      <Link to={{
+        pathname: '/send',
+        state: row
+      }}>
+        <SendIcon className="IconSmall" />
+      </Link>
+      : <></>
+    }
+    </>
+  )
+}
+
+
+
 const Balance = (props) => {
   const isAuthenticated = props.isAuthenticated
   const [accounts, setAccounts] = useState([]);
@@ -74,6 +96,9 @@ const Balance = (props) => {
   }, {
     dataField: 'deposit',
     formatter: CellDeposit
+  }, {
+    dataField: 'send',
+    formatter: CellSend
   }];
 
   const defaultSorted = [{
@@ -101,6 +126,7 @@ const Balance = (props) => {
           // flatten nested data
           account["id"] = id++;
           account["history"] = account.accountId;
+          account["send"] = account.accountId;
           account["ticker"] = account.curency.ticker;
           account["isCrypto"] = account.curency.isCrypto;
           account["displayName"] = account.curency.displayName;
