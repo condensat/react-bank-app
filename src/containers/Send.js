@@ -33,9 +33,13 @@ const Send = (props) => {
   const [withdrawId, setWithdrawId] = useState("")
 
   const location = useLocation();
-  const account = location.state ? location.state : {accountId: "", displayName: "", icon: null};
+  const account = location.state ? location.state : {accountId: "", displayName: "", balance: '', totalLocked: '', icon: null};
 
-  const {accountId, displayName, } = account;
+  const {accountId, displayName, balance, totalLocked} = account;
+
+  const total = balance;
+  const available = balance-totalLocked;
+  const locked = totalLocked
 
   const validateForm = () => {
     return parseFloat(amount) > 0.0 > 0 && publicAddress.length > 0 
@@ -98,6 +102,8 @@ const Send = (props) => {
               : <>
                 <a className="Link back" onClick={props.history.goBack}>Back</a>
                 <h1>{assetIcon(account.icon)} Withdraw {displayName}</h1>
+                <p> Total: {total} / (Locked: {locked}) </p>
+                <p> Available: { available } </p>
                 <Form noValidate onSubmit={handleSubmit}>
                   <Form.Row>
                     <InputGroup className="mb-3" onChange={e => setAmount(e.target.value)} >
