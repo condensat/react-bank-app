@@ -36,7 +36,7 @@ function App(props) {
       <Navbar bg="light" collapseOnSelect="true">
         <Navbar.Brand>
           <Link to="/">
-            <HomeIcon className="Icon" /> Condensat Bank
+            <HomeIcon className="Icon" /> Condensat Tech
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
