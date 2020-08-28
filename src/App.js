@@ -13,6 +13,7 @@ import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 import * as bank_api from "/js/bank-api.min.js";
 
 import "./App.css";
+import "./Beta.css";
 
 // sessionState renew session with timer
 var sessionState = function(props) { }
@@ -31,10 +32,11 @@ function App(props) {
 
   return (
     <div className="App container">
+      <div class="ribbon"><span>Beta</span></div>
       <Navbar bg="light" collapseOnSelect="true">
         <Navbar.Brand>
           <Link to="/">
-            <HomeIcon className="Icon" /> Condensat Bank
+            <HomeIcon className="Icon" /> Condensat Tech
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -5,6 +5,7 @@ import { CookiesProvider } from 'react-cookie';
 
 import 'typeface-pt-serif';
 import 'typeface-open-sans';
+import 'typeface-pt-mono';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./index.css"

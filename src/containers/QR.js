@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image } from "react-bootstrap";
+import { Image, Alert } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import QRCode from "qrcode-react";
 import PropTypes from "prop-types";
@@ -66,6 +66,7 @@ const QR = (props) => {
                 <p />
                 <a className="Link" href={url} target="_blank" rel="noopener noreferrer">{publicAddress}</a>
                 <p />
+                <Alert key="beta-id" variant="danger">We are still in <Alert.Link href="#">Beta</Alert.Link>, please use with care</Alert>
                 <div className="sideshift">
                   <a className="Link" href="https://sideshift.ai/a/SpUXYDG9v" target="_blank" rel="noopener noreferrer">
                     Shift some L-BTC<Image src={SideShiftLogo} />

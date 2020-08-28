@@ -36,7 +36,7 @@ const Receive = (props) => {
   const [accountsAsset, setAccountsAsset] = useState([]);
 
   useEffect(() => {
-    if ((accountsFiat.length + accountsCrypto.length) == 0) {   
+    if ((accountsFiat.length + accountsCrypto.length + accountsAsset.length) == 0) {   
       // fetch accounts info
       bank_api.accountList({ rateBase: "CHF" }, (err, result) => {
         if (err) {
