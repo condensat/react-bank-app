@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import DepositIcon from '@material-ui/icons/CenterFocusWeak';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import HistoryIcon from '@material-ui/icons/History';
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 import SendIcon from '@material-ui/icons/Send';
@@ -47,7 +48,15 @@ const CellDeposit = (cell, row) => {
       }}>
         <DepositIcon className="IconSmall" />
       </Link>
-      : <></>
+      :
+      <>
+      <Link to={{
+        pathname: '/fiat',
+        state: row
+      }}>
+        <AccountBalanceIcon className="IconSmall" />
+      </Link>
+      </>
     }
     </>
   )

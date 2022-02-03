@@ -1,22 +1,30 @@
 import React from 'react';
-import { Image } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 import PropTypes from "prop-types";
 
-import SWIFTLogo from "/img/SWIFT.png";
-import SEPALogo from "/img/SEPA.png";
+import { Alert } from "react-bootstrap";
 
 import LoginIcon from '@material-ui/icons/FingerprintOutlined';
 
 import "./Fiat.css";
 
+import settings from "/settings.js";
+
 const Fiat = (props) => {
+  const [cookies] = useCookies(['account']);
+
   const isAuthenticated = props.isAuthenticated
 
   const location = useLocation();
-  const deposit = location.state ? location.state : {accountId: "", displayName: "", icon: null};
+  const deposit = location.state ? location.state : {accountId: "", ticker: "CHF", displayName: "Swiss Franc", icon: null};
 
-  const displayName = deposit.displayName;
+  const { ticker, displayName } = deposit;
+
+  const { bank } = settings.mock;
+  const { IBANs } = settings.mock.sepa;
+  const fiatSepa = IBANs[ticker]
+  const accountNumber = cookies.account;
 
   return (
     <div className="Fiat">
@@ -25,10 +33,30 @@ const Fiat = (props) => {
         ? <>
             <a className="Link back" onClick={props.history.goBack}>Back</a>
             <h1>Fiat Withdrawal {displayName}</h1>
-            <div className="rows">
-              <div className="row method"><Image src={SEPALogo} /></div>
-              <div className="row method"><Image src={SWIFTLogo} /></div>
-            </div>
+            <p>For Fiat deposit use this following IBAN.</p>
+            <Alert key="beta-id" variant="danger">Please fill in your account number ({accountNumber}) in the purpose field</Alert>
+            <hr />
+            <p>
+              <span className="bold">BIC:</span>&nbsp;
+              <span className="code">{fiatSepa.BIC}</span>
+            </p>
+            <p>
+              <span className="bold">IBAN:</span>&nbsp;
+              <span className="code">{fiatSepa.IBAN}</span>
+            </p>
+            <p>
+              <span className="bold">Name: </span>{fiatSepa.Contact.Name}
+              </p>
+            <p>
+              <span className="bold">Address:</span><br />{fiatSepa.Contact.Address1}<br />{fiatSepa.Contact.Address2}<br />{fiatSepa.Contact.Address3}
+            </p>
+            <hr />
+              <p>
+                {bank.Contact.Name}
+              </p>
+            <p>
+              {bank.Contact.Address1}<br />{bank.Contact.Address2}<br />{bank.Contact.Address3}
+            </p>
         </>
         : <>
             <div className="Login">
