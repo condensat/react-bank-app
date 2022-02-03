@@ -27,12 +27,26 @@
   font-weight: bold;
 }
 
+.Signup h1 {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  margin-bottom: 1.25em;
+}
+
 .Signup h3 {
   text-align: center;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   margin-bottom: 1em;
 }
+
+.Signup .Icon {
+  padding-bottom: 4px;
+  vertical-align: top;
+  color: grey;
+}
+
 
 .Signup div.oauth.col {
   color: grey;

@@ -15,6 +15,8 @@ import * as bank_api from "/js/bank-api.min.js";
 import "./App.css";
 import "./Beta.css";
 
+import settings from "/settings.js";
+
 // sessionState renew session with timer
 var sessionState = function(props) { }
 
@@ -40,7 +42,7 @@ function App(props) {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        {isAuthenticated
+        {isAuthenticated && settings.withMenu
           ? <Navbar.Collapse className="mr-auto" id="basic-navbar-nav">
             <NavDropdown className="menu" title="Menu" id="basic-nav-dropdown">
               <LinkContainer to="/settings">
@@ -70,7 +72,7 @@ function App(props) {
       </Navbar>
       <Container>
           <Row>
-          {isAuthenticated
+          {isAuthenticated && settings.withSidbar
             ? <Col className="menu" xs lg="2">
                 <div className="left">
                   <NavDropdown.Divider />
@@ -83,14 +85,18 @@ function App(props) {
                   <LinkContainer to="/send">
                     <NavDropdown.Item>Send</NavDropdown.Item>
                   </LinkContainer>
-                    <NavDropdown.Divider />
-                  <LinkContainer to="/swap">
-                    <NavDropdown.Item>Swap</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/otc">
-                    <NavDropdown.Item>OTC</NavDropdown.Item>
-                  </LinkContainer>
-                </div>
+                  <NavDropdown.Divider />
+                  { settings.options.Swap && (
+                      <LinkContainer to="/swap">
+                        <NavDropdown.Item>Swap</NavDropdown.Item>
+                      </LinkContainer>
+                  )}
+                  { settings.options.OTC && (
+                    <LinkContainer to="/otc">
+                      <NavDropdown.Item>OTC</NavDropdown.Item>
+                    </LinkContainer>
+                  )}
+                  </div>
               </Col>
             : <></>
           }

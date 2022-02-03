@@ -3,7 +3,6 @@ import { Switch } from "react-router-dom";
 
 import AppliedRoute from "./components/AppliedRoute";
 
-import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Settings from "./containers/Settings";
@@ -23,11 +22,16 @@ import OTC from "./containers/OTC";
 import TooOld from "./containers/TooOld";
 import NotFound from "./containers/NotFound";
 
+import settings from "/settings.js";
+
 function Routes({ appProps }) {
+  const authProp = {...appProps, ...{withOAuth: true, withMail: true, withOTP: false}}
+  const otpProp = {...appProps, ...{withOAuth: false, withMail: false, withOTP: true}}
   return (
     <Switch>
-      <AppliedRoute appProps={appProps} path="/" exact component={Home} />
-      <AppliedRoute appProps={appProps} path="/login" exact component={Login} />
+      <AppliedRoute appProps={appProps} path="/" exact component={Balance} />
+      <AppliedRoute appProps={otpProp} path="/login" exact component={Login} />
+      <AppliedRoute appProps={authProp} path="/oauth" exact component={Login} />
       <AppliedRoute appProps={appProps} path="/signup" exact component={Signup} />
       <AppliedRoute appProps={appProps} path="/settings" exact component={Settings} />
 
@@ -38,11 +42,17 @@ function Routes({ appProps }) {
       <AppliedRoute appProps={appProps} path="/fiat" exact component={Fiat} />
       <AppliedRoute appProps={appProps} path="/qr" exact component={QR} />
       <AppliedRoute appProps={appProps} path="/send" exact component={Send} />
-      <AppliedRoute appProps={appProps} path="/swap" exact component={Swap} />
-      <AppliedRoute appProps={appProps} path="/swap/make" exact component={SwapMake} />
-      <AppliedRoute appProps={appProps} path="/swap/info" exact component={SwapInfo} />
-      <AppliedRoute appProps={appProps} path="/swap/take" exact component={SwapTake} />
-      <AppliedRoute appProps={appProps} path="/otc" exact component={OTC} />
+      { settings.options.Swap && (
+        <>
+          <AppliedRoute appProps={appProps} path="/swap" exact component={Swap} />
+          <AppliedRoute appProps={appProps} path="/swap/make" exact component={SwapMake} />
+          <AppliedRoute appProps={appProps} path="/swap/info" exact component={SwapInfo} />
+          <AppliedRoute appProps={appProps} path="/swap/take" exact component={SwapTake} />
+        </>
+        )}
+      { settings.options.OTC && (
+        <AppliedRoute appProps={appProps} path="/otc" exact component={OTC} />
+      )}
 
       {/* fallback */}
       <AppliedRoute appProps={appProps} path="/tooold" exact component={TooOld} />
