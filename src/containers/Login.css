@@ -61,6 +61,11 @@
   margin: 1em;
 }
 
+.Login div.otp.col {
+  color: grey;
+  margin: 1em;
+}
+
 .Login .not-active {
   pointer-events: none;
   cursor: default;

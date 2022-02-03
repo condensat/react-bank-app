@@ -41,7 +41,9 @@ function Login(props) {
 
     storeCookie();
 
-    bank_api.openSession({ login: account, password}, (err) => {
+
+    var totp = withOTP ? password : "";
+    bank_api.openSession({ login: account, password, totp}, (err) => {
       if (err != null) {
         props.userHasAuthenticated(false);
         setInvalidLoginOrPassword(true);
@@ -53,59 +55,87 @@ function Login(props) {
     })
   }
 
+  const withOAuth = props.withOAuth ?? false
+  const withMail = props.withMail ?? false
+  const withOTP = props.withOTP ?? true
+
   return (
     <div className="Login">
       <Container fluid>
-        <Row md={4}>
-          <Col className="oauth">
-            <h3>Login With</h3>
-            <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/google">
-                <Image src={GoogleLogo} /><span className="provider">Google</span>
-              </a>
-            </div>
-            <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/facebook">
-                <Image src={FacebookLogo} /><span className="provider">Facebook</span>
-              </a>
-            </div>
-            <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/github">
-                <Image src={GithubLogo} /><span className="provider">GitHub</span>
-              </a>
-            </div>
-            <div className="provider">
-              <a href="https://bank.condensat.space/api/v1/auth/twitter">
-                <Image src={TwitterLogo} /><span className="provider">Twitter</span>
-              </a>
-            </div>
-            <div className="provider">
-              <a className="not-active" href="https://bank.condensat.space/api/v1/auth/openid">
-                <Image src={OpenIdLogo} /><span className="provider"></span>
-              </a>
-            </div>
+        <Row md={8}>
+          {withOAuth && (<>
+            <Col className="oauth">
+              <h3>Login With</h3>
+              <div className="provider">
+                <a href="https://bank.condensat.space/api/v1/auth/google">
+                  <Image src={GoogleLogo} /><span className="provider">Google</span>
+                </a>
+              </div>
+              <div className="provider">
+                <a href="https://bank.condensat.space/api/v1/auth/facebook">
+                  <Image src={FacebookLogo} /><span className="provider">Facebook</span>
+                </a>
+              </div>
+              <div className="provider">
+                <a href="https://bank.condensat.space/api/v1/auth/github">
+                  <Image src={GithubLogo} /><span className="provider">GitHub</span>
+                </a>
+              </div>
+              <div className="provider">
+                <a href="https://bank.condensat.space/api/v1/auth/twitter">
+                  <Image src={TwitterLogo} /><span className="provider">Twitter</span>
+                </a>
+              </div>
+              <div className="provider">
+                <a className="not-active" href="https://bank.condensat.space/api/v1/auth/openid">
+                  <Image src={OpenIdLogo} /><span className="provider"></span>
+                </a>
+              </div>
+            </Col>
+            <Col className="sep" md="auto"></Col>
+          </>)}
+          {withMail && (<>
+            <Col className="basic">
+              <h3>Credentials</h3>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formLoginAccount" bssize="large">
+                  <Form.Label>Account</Form.Label>
+                  <Form.Control type="text" placeholder="Enter account" isInvalid={invalidLoginOrPassword} defaultValue={account} autoFocus="1" onChange={e => setAccount(e.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="formLoginPassword" bssize="large">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" id="password" isInvalid={invalidLoginOrPassword} onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="formLoginRemember">
+                  <Form.Check type="checkbox" label="Remember me" defaultChecked={remember} onChange={e => setRemember(e.target.checked)} />
+                </Form.Group>
+                <Button block bssize="large" disabled={!validateForm()} type="submit">
+                  Login
+              </Button>
+              </Form>
           </Col>
-          <Col className="sep" md="auto"></Col>
-          <Col className="basic">
-            <h3>Credentials</h3>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formLoginAccount" bssize="large">
-                <Form.Label>Account</Form.Label>
-                <Form.Control type="text" placeholder="Enter account" isInvalid={invalidLoginOrPassword} defaultValue={account} autoFocus="1" onChange={e => setAccount(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId="formLoginPassword" bssize="large">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" id="password" isInvalid={invalidLoginOrPassword} onChange={e => setPassword(e.target.value)} />
-              </Form.Group>
-              <Form.Group controlId="formLoginRemember">
-                <Form.Check type="checkbox" label="Remember me" defaultChecked={remember} onChange={e => setRemember(e.target.checked)} />
-              </Form.Group>
-              <Button block bssize="large" disabled={!validateForm()} type="submit">
-                Login
-            </Button>
-            </Form>
-        </Col>
+        </>)}
+          {withOTP && (<>
+            <Col className="otp">
+              <h3>Connect to your bank account</h3>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formLoginAccount" bssize="large">
+                  <Form.Label>Account number</Form.Label>
+                  <Form.Control type="text" placeholder="Enter account number" isInvalid={invalidLoginOrPassword} defaultValue={account} autoFocus="1" onChange={e => setAccount(e.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="formLoginPassword" bssize="large">
+                  <Form.Label>TOTP</Form.Label>
+                  <Form.Control type="password" placeholder="******" id="password" isInvalid={invalidLoginOrPassword} onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="formLoginRemember">
+                  <Form.Check type="checkbox" label="Remember me" defaultChecked={remember} onChange={e => setRemember(e.target.checked)} />
+                </Form.Group>
+                <Button block bssize="large" disabled={!validateForm()} type="submit">
+                  Connect
+              </Button>
+              </Form>
+          </Col>
+        </>)}
       </Row>
     </Container>
     </div>
@@ -113,6 +143,9 @@ function Login(props) {
 }
 
 Login.propTypes = {
+  withOAuth: PropTypes.bool,
+  withMail: PropTypes.bool,
+  withOTP: PropTypes.bool,
   history: PropTypes.object.isRequired,
   userHasAuthenticated: PropTypes.func
 };
