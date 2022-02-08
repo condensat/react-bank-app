@@ -11,6 +11,7 @@ import Balance from "./containers/Balance";
 import History from "./containers/History";
 import Receive from "./containers/Receive";
 import Fiat from "./containers/Fiat";
+import FiatWithdraw from "./containers/FiatWithdraw";
 import QR from "./containers/QR";
 import Send from "./containers/Send";
 import Swap from "./containers/Swap";
@@ -40,6 +41,7 @@ function Routes({ appProps }) {
       <AppliedRoute appProps={appProps} path="/history" exact component={History} />
       <AppliedRoute appProps={appProps} path="/receive" exact component={Receive} />
       <AppliedRoute appProps={appProps} path="/fiat" exact component={Fiat} />
+      <AppliedRoute appProps={appProps} path="/fiatwithdraw" exact component={FiatWithdraw} />
       <AppliedRoute appProps={appProps} path="/qr" exact component={QR} />
       <AppliedRoute appProps={appProps} path="/send" exact component={Send} />
       { settings.options.Swap && (

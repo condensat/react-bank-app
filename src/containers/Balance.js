@@ -75,7 +75,14 @@ const CellSend = (cell, row) => {
       }}>
         <SendIcon className="IconSmall" />
       </Link>
-      : <></>
+      : <>
+      <Link to={{
+        pathname: '/fiatwithdraw',
+        state: row
+      }}>
+        <SendIcon className="IconSmall" />
+      </Link>
+      </>
     }
     </>
   )
@@ -136,13 +143,13 @@ const Balance = (props) => {
           account["id"] = id++;
           account["history"] = account.accountId;
           account["send"] = account.accountId;
-          account["ticker"] = account.curency.ticker;
-          account["isCrypto"] = account.curency.isCrypto;
-          account["displayName"] = account.curency.displayName;
-          if (!account.curency.displayName) {
+          account["ticker"] = account.currency.ticker;
+          account["isCrypto"] = account.currency.isCrypto;
+          account["displayName"] = account.currency.displayName;
+          if (!account.currency.displayName) {
             account["displayName"] = "No Name"
           }
-          account["icon"] = account.curency.icon
+          account["icon"] = account.currency.icon
           account["notionalTicker"] = ""
           account["notionalBalance"] = null
           if (account.notional) {
@@ -150,9 +157,9 @@ const Balance = (props) => {
             account["notionalBalance"] = account.notional.balance;
           }
 
-          if (account.curency.isAsset && account.curency.ticker != "TBTC") {
-            if (account.curency.displayName || account.curency.icon) {
-              if (account.curency.icon) {
+          if (account.currency.isAsset && account.currency.ticker != "TBTC") {
+            if (account.currency.displayName || account.currency.icon) {
+              if (account.currency.icon) {
                 entriesAsset.push(account);
               } else {
                 entriesAssetWithoutIcon.push(account);
@@ -160,7 +167,7 @@ const Balance = (props) => {
             } else {
               entriesOther.push(account);
             }
-          } else if (account.curency.isCrypto) {
+          } else if (account.currency.isCrypto) {
             entriesCrypto.push(account);
           } else {
             entriesFiat.push(account);
