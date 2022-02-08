@@ -52,17 +52,17 @@ const Receive = (props) => {
         result.accounts.forEach(account => {
           // flatten nested data
           account["id"] = id++;
-          account["isCrypto"] = account.curency.isCrypto;
-          account["displayName"] = account.curency.displayName;
-          if (!account.curency.displayName) {
+          account["isCrypto"] = account.currency.isCrypto;
+          account["displayName"] = account.currency.displayName;
+          if (!account.currency.displayName) {
             account["displayName"] = "No Name"
           }
-          account["icon"] = account.curency.icon
+          account["icon"] = account.currency.icon
 
           // skip asset related account
-          if (account.curency.isAsset && account.curency.ticker != "TBTC") {
-            if (account.curency.displayName || account.curency.icon) {
-              if (account.curency.icon) {
+          if (account.currency.isAsset && account.currency.ticker != "TBTC") {
+            if (account.currency.displayName || account.currency.icon) {
+              if (account.currency.icon) {
                 entriesAsset.push(account);
                 return
               } else {
@@ -73,7 +73,7 @@ const Receive = (props) => {
             }
           }
 
-          if (account.curency.isCrypto) {
+          if (account.currency.isCrypto) {
             entriesCrypto.push(account);
           } else {
             entriesFiat.push(account);
